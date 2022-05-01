@@ -6,6 +6,9 @@ export interface Language {
     read: string
     create: string
   }
+  errors: {
+    load: string
+  }
 }
 
 export let strings = new LocalizedStrings<Language>({

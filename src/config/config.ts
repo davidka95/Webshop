@@ -3,7 +3,7 @@ import Config from 'react-native-config'
 interface AppConfig {
   baseUrl: string
   apiKey: string
-  useMock: string
+  useMock: boolean
 }
 
 export const appConfig: AppConfig = {

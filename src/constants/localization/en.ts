@@ -5,4 +5,7 @@ export const en: Language = {
     read: 'Read',
     create: 'Create',
   },
+  errors: {
+    load: 'Loading failed',
+  },
 }
