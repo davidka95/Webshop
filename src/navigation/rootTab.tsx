@@ -2,7 +2,7 @@ import React from 'react'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import {CreateProductScreen} from '../screens/createProduct'
 import {ProductScreen} from '../screens/product'
-import {strings} from '../constants/localization'
+import {strings} from '../constants/localization/localization'
 
 type RootTabParamsList = {
   CREATE_PRODUCT: undefined
