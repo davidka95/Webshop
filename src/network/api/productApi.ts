@@ -10,7 +10,11 @@ export class ProductApi {
   }
 
   read = async () => {
-    const response = await apiClient.get<Product[]>('read')
+    const response = await apiClient.get<Product[]>('product/read')
     return response.data
+  }
+
+  remove = async (id: string) => {
+    await apiClient.delete(`product/${id}`)
   }
 }

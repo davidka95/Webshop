@@ -6,7 +6,7 @@ import {v4} from 'uuid'
 
 const mock = new MockAdapter(axios, {delayResponse: 750})
 
-mock.onGet('read').reply<Product[]>(200, [
+mock.onGet('product/read').reply<Product[]>(200, [
   {
     id: v4(),
     name: "Harry Potter and the Philosopher's Stone",
@@ -15,3 +15,5 @@ mock.onGet('read').reply<Product[]>(200, [
     quantity: 13,
   },
 ])
+
+mock.onDelete(/product\/([A-Za-z0-9-]+)$/).reply<Product[]>(204)
