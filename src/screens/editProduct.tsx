@@ -3,7 +3,7 @@ import {strings} from '../constants/localization/localization'
 import {ProductForm, ProductFormData} from '../components/forms/productForm'
 import {ProductContext} from '../context/productProvider'
 import {CreateProduct} from '../model/dto/createProduct'
-import {View} from 'react-native'
+import {Alert, View} from 'react-native'
 import {Loader} from '../components/loader'
 import {LoadStatus} from '../model/enum/loadStatus'
 import {RouteProp, useNavigation, useRoute} from '@react-navigation/native'
@@ -26,6 +26,8 @@ export const EditProductScreen = () => {
     const isSuccess = await updateProduct(product)
     if (isSuccess) {
       navigation.goBack()
+    } else {
+      Alert.alert(strings.errors.attention, strings.editProduct.editError)
     }
 
     return isSuccess

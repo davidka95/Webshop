@@ -8,6 +8,7 @@ export interface Language {
   }
   errors: {
     load: string
+    attention: string
   }
   productsScreen: {
     emptyList: string
@@ -23,13 +24,16 @@ export interface Language {
     quantity: string
     quantityPlaceholder: string
     quantityEmpty: string
+    checkFields: string
   }
   createProduct: {
     create: string
+    createError: string
   }
   editProduct: {
     title: string
     edit: string
+    editError: string
   }
 }
 

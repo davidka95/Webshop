@@ -7,6 +7,7 @@ export const en: Language = {
   },
   errors: {
     load: 'Loading failed',
+    attention: 'Attention',
   },
   productsScreen: {
     emptyList: 'Jelenleg nincs termék',
@@ -23,12 +24,15 @@ export const en: Language = {
     quantity: 'Quantity',
     quantityPlaceholder: '12',
     quantityEmpty: 'Quantity field is required',
+    checkFields: 'Please, check the input fields',
   },
   createProduct: {
     create: 'Create',
+    createError: 'Product creation failed.',
   },
   editProduct: {
     title: 'Edit',
     edit: 'Edit',
+    editError: 'Product update failed',
   },
 }

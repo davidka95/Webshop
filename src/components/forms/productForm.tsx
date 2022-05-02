@@ -1,10 +1,10 @@
 import React, {useEffect, useRef} from 'react'
 import {useForm, SubmitErrorHandler, Controller} from 'react-hook-form'
-import {TextInput, ScrollView, View} from 'react-native'
+import {TextInput, ScrollView, View, Alert} from 'react-native'
 import {strings} from '../../constants/localization/localization'
 import {margins} from '../../constants/margins'
 import {spaces} from '../../constants/spaces'
-import {Button} from '../buttons/button'
+import {Button, ButtonComponent} from '../buttons/button'
 import {SimpleTextInput} from '../textInputs/textInput'
 
 export type ProductFormData = {
@@ -22,6 +22,7 @@ interface ProductFormProps {
 export const ProductForm = (props: ProductFormProps) => {
   const descriptionInputRef = useRef<TextInput>(null)
   const quantityInputRef = useRef<TextInput>(null)
+  const buttonRef = useRef<ButtonComponent>(null)
 
   const {handleSubmit, control, reset, setValue} = useForm<ProductFormData>()
 
@@ -29,11 +30,14 @@ export const ProductForm = (props: ProductFormProps) => {
     const isSuccess = await props.onSubmit(data)
     if (isSuccess) {
       reset()
+    } else {
+      buttonRef.current?.animate()
     }
   }
 
-  const onError: SubmitErrorHandler<ProductFormData> = errors => {
-    return console.log(errors)
+  const onError: SubmitErrorHandler<ProductFormData> = () => {
+    Alert.alert(strings.errors.attention, strings.productForm.checkFields)
+    buttonRef.current?.animate()
   }
 
   useEffect(() => {
@@ -126,6 +130,7 @@ export const ProductForm = (props: ProductFormProps) => {
         />
       </View>
       <Button
+        ref={buttonRef}
         title={props.buttonText}
         onPress={handleSubmit(onSubmit, onError)}
       />
