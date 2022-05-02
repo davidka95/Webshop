@@ -3,7 +3,6 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import {CreateProductScreen} from '../screens/createProduct'
 import {ProductScreen} from '../screens/product'
 import {strings} from '../constants/localization/localization'
-import {Colors} from 'react-native/Libraries/NewAppScreen'
 import {useColors} from '../hooks/colorHooks'
 import {TabBarIcon} from '../components/tabBarIcon'
 

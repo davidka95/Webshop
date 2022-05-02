@@ -4,8 +4,6 @@ import {
   LayoutAnimation,
   ListRenderItemInfo,
   StyleSheet,
-  Text,
-  View,
 } from 'react-native'
 import {ProductRow} from '../components/rows/productRow'
 import {spaces} from '../constants/spaces'
