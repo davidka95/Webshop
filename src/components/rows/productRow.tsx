@@ -1,5 +1,5 @@
-import React, {useCallback} from 'react'
-import {StyleSheet, Text, View} from 'react-native'
+import React, {useCallback, useEffect, useState} from 'react'
+import {LayoutAnimation, StyleSheet, Text, View} from 'react-native'
 import {Product} from '../../model/product'
 import {Card} from '../card'
 import {IconButton} from '../buttons/iconButton'
@@ -11,10 +11,13 @@ import {fontSizes} from '../../constants/fonts'
 export interface ProductRowProps {
   onEditPress?: (id: string) => void
   onDeletePress?: (id: string) => void
+  onPress?: (product: Product) => void
   product: Product
 }
 
 export const ProductRow = (props: ProductRowProps) => {
+  const [isOpened, setIsOpened] = useState(false)
+
   const colors = useColors()
   const styles = createStyles(colors)
   const {product} = props
@@ -27,12 +30,19 @@ export const ProductRow = (props: ProductRowProps) => {
     props.onDeletePress?.(product.id)
   }, [product])
 
+  const onPress = useCallback(() => {
+    setIsOpened(!isOpened)
+  }, [isOpened])
+
   return (
-    <Card>
+    <Card onPress={onPress}>
       <Text style={[styles.title, margins.mbNormal]}>{product.name}</Text>
-      <Text style={[styles.description, margins.mbNormal]} numberOfLines={2}>
+      <Text
+        style={[styles.description, margins.mbNormal]}
+        numberOfLines={isOpened ? undefined : 2}>
         {product.description}
       </Text>
+
       <View style={styles.quantityRow}>
         <IconButton
           style={[margins.mrSmall]}

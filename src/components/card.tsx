@@ -63,6 +63,7 @@ export const Card = (props: CardProps) => {
 const createStyles = (colors: Colors) => {
   const styles = StyleSheet.create({
     container: {
+      overflow: 'hidden',
       borderRadius: 10,
       backgroundColor: colors.card.background,
       shadowColor: colors.card.shadow,
