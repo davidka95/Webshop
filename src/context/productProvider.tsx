@@ -10,22 +10,26 @@ interface ProductContextProps {
   getProducts: () => void
   remove: (id: string) => void
   addProduct: (product: CreateProduct) => Promise<boolean>
+  updateProduct: (product: Product) => Promise<boolean>
   products: Product[]
   loadStatus: LoadStatus
   error?: string
   removeLoadStatus: LoadStatus
   createLoadStatus: LoadStatus
+  updateLoadStatus: LoadStatus
 }
 
 export const ProductContext = createContext<ProductContextProps>({
   getProducts: () => {},
   remove: () => {},
   addProduct: async () => true,
+  updateProduct: async () => true,
   products: [],
   loadStatus: LoadStatus.NONE,
   error: undefined,
   removeLoadStatus: LoadStatus.NONE,
   createLoadStatus: LoadStatus.NONE,
+  updateLoadStatus: LoadStatus.NONE,
 })
 
 const productApi = new ProductApi()
@@ -38,6 +42,9 @@ export const ProductProvider: React.FC = ({children}) => {
     LoadStatus.NONE,
   )
   const [createLoadStatus, setCreateLoadStatus] = useState<LoadStatus>(
+    LoadStatus.NONE,
+  )
+  const [updateLoadStatus, setUpdateLoadStatus] = useState<LoadStatus>(
     LoadStatus.NONE,
   )
 
@@ -58,7 +65,8 @@ export const ProductProvider: React.FC = ({children}) => {
     setRemoveLoadStatus(LoadStatus.LOADING)
     try {
       await productApi.remove(id)
-      setProducts(products.filter(p => p.id !== id))
+      const filteredProducts = products.filter(p => p.id !== id)
+      setProducts(filteredProducts)
     } catch (error) {
       // TODO:
     }
@@ -74,9 +82,23 @@ export const ProductProvider: React.FC = ({children}) => {
       return true
     } catch (error) {
       return false
-      // TODO:
     } finally {
       setCreateLoadStatus(LoadStatus.LOADED)
+    }
+  }
+
+  const updateProduct = async (product: Product) => {
+    setUpdateLoadStatus(LoadStatus.LOADING)
+    try {
+      await productApi.update(product.id, product)
+      const updatedProductIndex = products.findIndex(p => p.id === product.id)
+      products[updatedProductIndex] = product
+      setProducts([...products])
+      return true
+    } catch (error) {
+      return false
+    } finally {
+      setUpdateLoadStatus(LoadStatus.LOADED)
     }
   }
 
@@ -86,11 +108,13 @@ export const ProductProvider: React.FC = ({children}) => {
         getProducts,
         remove,
         addProduct,
+        updateProduct,
         products,
         loadStatus,
         error,
         createLoadStatus,
         removeLoadStatus,
+        updateLoadStatus,
       }}>
       {children}
     </ProductContext.Provider>

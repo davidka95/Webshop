@@ -27,6 +27,10 @@ export interface Language {
   createProduct: {
     create: string
   }
+  editProduct: {
+    title: string
+    edit: string
+  }
 }
 
 export let strings = new LocalizedStrings<Language>({

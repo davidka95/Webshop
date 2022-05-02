@@ -27,4 +27,8 @@ export const en: Language = {
   createProduct: {
     create: 'Create',
   },
+  editProduct: {
+    title: 'Edit',
+    edit: 'Edit',
+  },
 }

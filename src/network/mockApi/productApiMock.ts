@@ -20,3 +20,5 @@ mock.onGet('product/read').reply<Product[]>(200, [
 mock.onDelete(/product\/([A-Za-z0-9-]+)$/).reply(204)
 
 mock.onPost('product').reply<CreateProductResponse>(200, {id: v4()})
+
+mock.onPut(/product\/([A-Za-z0-9-]+)$/).reply<CreateProductResponse>(204)

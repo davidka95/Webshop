@@ -1,14 +1,14 @@
 import React from 'react'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import {CreateProductScreen} from '../screens/createProduct'
-import {ProductScreen} from '../screens/product'
 import {strings} from '../constants/localization/localization'
 import {useColors} from '../hooks/colorHooks'
 import {TabBarIcon} from '../components/tabBarIcon'
+import {ProductStack} from './productStack'
 
 export type RootTabParamsList = {
   CREATE_PRODUCT: undefined
-  PRODUCTS: undefined
+  PRODUCTS_STACK: undefined
 }
 
 const Tab = createBottomTabNavigator<RootTabParamsList>()
@@ -27,10 +27,11 @@ export const RootTab = () => {
       <Tab.Screen
         options={{
           title: strings.tabs.read,
+          headerShown: false,
           tabBarIcon: props => <TabBarIcon {...props} name="shop" />,
         }}
-        name="PRODUCTS"
-        component={ProductScreen}
+        name="PRODUCTS_STACK"
+        component={ProductStack}
       />
       <Tab.Screen
         name="CREATE_PRODUCT"

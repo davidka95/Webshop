@@ -1,4 +1,4 @@
-import React, {useRef} from 'react'
+import React, {useEffect, useRef} from 'react'
 import {useForm, SubmitErrorHandler, Controller} from 'react-hook-form'
 import {TextInput, ScrollView, View} from 'react-native'
 import {strings} from '../../constants/localization/localization'
@@ -15,6 +15,7 @@ export type ProductFormData = {
 
 interface ProductFormProps {
   buttonText: string
+  initialValue?: ProductFormData
   onSubmit: (data: ProductFormData) => Promise<boolean>
 }
 
@@ -22,7 +23,7 @@ export const ProductForm = (props: ProductFormProps) => {
   const descriptionInputRef = useRef<TextInput>(null)
   const quantityInputRef = useRef<TextInput>(null)
 
-  const {handleSubmit, control, reset} = useForm<ProductFormData>()
+  const {handleSubmit, control, reset, setValue} = useForm<ProductFormData>()
 
   const onSubmit = async (data: ProductFormData) => {
     const isSuccess = await props.onSubmit(data)
@@ -34,6 +35,14 @@ export const ProductForm = (props: ProductFormProps) => {
   const onError: SubmitErrorHandler<ProductFormData> = errors => {
     return console.log(errors)
   }
+
+  useEffect(() => {
+    if (props.initialValue) {
+      setValue('name', props.initialValue.name)
+      setValue('description', props.initialValue.description)
+      setValue('quantity', props.initialValue.quantity)
+    }
+  }, [])
 
   return (
     <ScrollView
@@ -117,7 +126,7 @@ export const ProductForm = (props: ProductFormProps) => {
         />
       </View>
       <Button
-        title={strings.createProduct.create}
+        title={props.buttonText}
         onPress={handleSubmit(onSubmit, onError)}
       />
     </ScrollView>

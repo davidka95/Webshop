@@ -28,4 +28,12 @@ export class ProductApi {
     )
     return reponse.data
   }
+
+  update = async (id: string, product: CreateProduct) => {
+    const reponse = await apiClient.post<CreateProductResponse>(
+      'product',
+      product,
+    )
+    return reponse.data
+  }
 }
