@@ -1,4 +1,7 @@
+import {responseLogger} from 'axios-logger'
 import {appConfig} from '../../config/config'
+import {CreateProduct} from '../../model/dto/createProduct'
+import {CreateProductResponse} from '../../model/dto/createProductResponse'
 import {Product} from '../../model/product'
 import {apiClient} from '../apiClient'
 
@@ -16,5 +19,13 @@ export class ProductApi {
 
   remove = async (id: string) => {
     await apiClient.delete(`product/${id}`)
+  }
+
+  create = async (product: CreateProduct) => {
+    const reponse = await apiClient.post<CreateProductResponse>(
+      'product',
+      product,
+    )
+    return reponse.data
   }
 }

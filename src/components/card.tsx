@@ -69,6 +69,7 @@ const createStyles = (colors: Colors) => {
       elevation: 4,
       shadowOpacity: 1,
       shadowRadius: 34,
+      marginBottom: spaces.medium,
       padding: spaces.medium,
       shadowOffset: {
         height: 13,

@@ -7,7 +7,7 @@ import {spaces} from '../../constants/spaces'
 import {Button} from '../buttons/button'
 import {SimpleTextInput} from '../textInputs/textInput'
 
-type FormData = {
+export type ProductFormData = {
   name: string
   description: string
   quantity: string
@@ -15,20 +15,23 @@ type FormData = {
 
 interface ProductFormProps {
   buttonText: string
-  onSubmit: (data: FormData) => void
+  onSubmit: (data: ProductFormData) => Promise<boolean>
 }
 
 export const ProductForm = (props: ProductFormProps) => {
   const descriptionInputRef = useRef<TextInput>(null)
   const quantityInputRef = useRef<TextInput>(null)
 
-  const {handleSubmit, control} = useForm<FormData>()
+  const {handleSubmit, control, reset} = useForm<ProductFormData>()
 
-  const onSubmit = (data: FormData) => {
-    props.onSubmit(data)
+  const onSubmit = async (data: ProductFormData) => {
+    const isSuccess = await props.onSubmit(data)
+    if (isSuccess) {
+      reset()
+    }
   }
 
-  const onError: SubmitErrorHandler<FormData> = errors => {
+  const onError: SubmitErrorHandler<ProductFormData> = errors => {
     return console.log(errors)
   }
 

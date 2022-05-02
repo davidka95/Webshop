@@ -24,6 +24,11 @@ export interface Colors {
     background: string
     error: string
   }
+  loader: {
+    background: string
+    center: string
+    indicator: string
+  }
 }
 
 export const lightColors: Colors = {
@@ -52,6 +57,11 @@ export const lightColors: Colors = {
     background: '#FBF8F1',
     error: '#B00020',
   },
+  loader: {
+    background: '#54BAB955',
+    center: '#FBF8F1',
+    indicator: '#54BAB9',
+  },
 }
 export const darkColors: Colors = {
   primary: '#E9DAC1',
@@ -78,5 +88,10 @@ export const darkColors: Colors = {
     text: '#1a1a1b',
     background: '#FBF8F1',
     error: '#B00020',
+  },
+  loader: {
+    background: '#54BAB99a',
+    center: '#F7ECDE',
+    indicator: '#54BAB9',
   },
 }

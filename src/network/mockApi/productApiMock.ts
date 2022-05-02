@@ -3,6 +3,7 @@ import {Product} from '../../model/product'
 import axios from 'axios'
 import 'react-native-get-random-values'
 import {v4} from 'uuid'
+import {CreateProductResponse} from '../../model/dto/createProductResponse'
 
 const mock = new MockAdapter(axios, {delayResponse: 750})
 
@@ -16,4 +17,6 @@ mock.onGet('product/read').reply<Product[]>(200, [
   },
 ])
 
-mock.onDelete(/product\/([A-Za-z0-9-]+)$/).reply<Product[]>(204)
+mock.onDelete(/product\/([A-Za-z0-9-]+)$/).reply(204)
+
+mock.onPost('product').reply<CreateProductResponse>(200, {id: v4()})
