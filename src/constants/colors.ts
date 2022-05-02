@@ -18,6 +18,12 @@ export interface Colors {
     background: string
     shadow: string
   }
+  textInput: {
+    placeholder: string
+    text: string
+    background: string
+    error: string
+  }
 }
 
 export const lightColors: Colors = {
@@ -40,6 +46,12 @@ export const lightColors: Colors = {
     background: '#FBF8F1',
     shadow: '#45536512',
   },
+  textInput: {
+    placeholder: '#575A5C',
+    text: '#1a1a1b',
+    background: '#FBF8F1',
+    error: '#B00020',
+  },
 }
 export const darkColors: Colors = {
   primary: '#E9DAC1',
@@ -60,5 +72,11 @@ export const darkColors: Colors = {
   card: {
     background: '#FBF8F1',
     shadow: '#45536512',
+  },
+  textInput: {
+    placeholder: '#575A5C',
+    text: '#1a1a1b',
+    background: '#FBF8F1',
+    error: '#B00020',
   },
 }

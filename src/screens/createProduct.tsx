@@ -1,6 +1,13 @@
 import React from 'react'
-import {View} from 'react-native'
+import {strings} from '../constants/localization/localization'
+import {ProductForm} from '../components/forms/productForm'
 
 export const CreateProductScreen = () => {
-  return <View></View>
+  const onSubmit = () => {}
+  return (
+    <ProductForm
+      onSubmit={onSubmit}
+      buttonText={strings.createProduct.create}
+    />
+  )
 }

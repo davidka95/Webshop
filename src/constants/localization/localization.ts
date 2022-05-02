@@ -13,6 +13,20 @@ export interface Language {
     emptyList: string
     newProduct: string
   }
+  productForm: {
+    name: string
+    namePlaceholder: string
+    nameEmpty: string
+    description: string
+    descriptionPlaceholder: string
+    descriptionEmpty: string
+    quantity: string
+    quantityPlaceholder: string
+    quantityEmpty: string
+  }
+  createProduct: {
+    create: string
+  }
 }
 
 export let strings = new LocalizedStrings<Language>({
