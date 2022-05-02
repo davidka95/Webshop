@@ -4,6 +4,7 @@ export interface Colors {
   accent: string
   background: string
   textPrimary: string
+  textPrimaryLight: string
   textSecondary: string
   navBar: {
     background: string
@@ -25,7 +26,8 @@ export const lightColors: Colors = {
   accent: '#54BAB9',
   background: '#F7ECDE',
   textPrimary: '#1a1a1b',
-  textSecondary: '#575A5C',
+  textPrimaryLight: '#575A5C',
+  textSecondary: '#FBF8F1',
   navBar: {
     background: '#FBF8F1',
   },
@@ -45,7 +47,8 @@ export const darkColors: Colors = {
   accent: '#54BAB9',
   background: '#F7ECDE',
   textPrimary: '#1a1a1b',
-  textSecondary: '##878A8C',
+  textPrimaryLight: '#575A5C',
+  textSecondary: '#FBF8F1',
   navBar: {
     background: '#FBF8F1',
   },

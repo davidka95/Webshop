@@ -9,6 +9,10 @@ export interface Language {
   errors: {
     load: string
   }
+  productsScreen: {
+    emptyList: string
+    newProduct: string
+  }
 }
 
 export let strings = new LocalizedStrings<Language>({

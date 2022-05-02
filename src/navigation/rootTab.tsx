@@ -6,7 +6,7 @@ import {strings} from '../constants/localization/localization'
 import {useColors} from '../hooks/colorHooks'
 import {TabBarIcon} from '../components/tabBarIcon'
 
-type RootTabParamsList = {
+export type RootTabParamsList = {
   CREATE_PRODUCT: undefined
   PRODUCTS: undefined
 }

@@ -66,6 +66,6 @@ const createStyles = (colors: Colors) =>
     },
     quantity: {
       fontSize: fontSizes.normal,
-      color: colors.textSecondary,
+      color: colors.textPrimaryLight,
     },
   })

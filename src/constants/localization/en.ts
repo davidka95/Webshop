@@ -8,4 +8,8 @@ export const en: Language = {
   errors: {
     load: 'Loading failed',
   },
+  productsScreen: {
+    emptyList: 'Jelenleg nincs termék',
+    newProduct: 'Új termék felvétele',
+  },
 }
