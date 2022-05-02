@@ -89,6 +89,7 @@ export const ProductForm = (props: ProductFormProps) => {
               style={margins.mbMedium}
               label={strings.productForm.description}
               textInputProps={{
+                textAlignVertical: 'top',
                 placeholder: strings.productForm.descriptionPlaceholder,
                 value: value.toString(),
                 onChangeText: onChange,
