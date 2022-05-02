@@ -7,6 +7,7 @@ import {ProductApi} from '../network/api/productApi'
 
 interface ProductContextProps {
   getProducts: () => void
+  remove: (id: string) => void
   products: Product[]
   loadStatus: LoadStatus
   error?: string
@@ -14,6 +15,7 @@ interface ProductContextProps {
 
 export const ProductContext = createContext<ProductContextProps>({
   getProducts: () => {},
+  remove: () => {},
   products: [],
   loadStatus: LoadStatus.NONE,
   error: undefined,
@@ -39,10 +41,20 @@ export const ProductProvider: React.FC = ({children}) => {
     setLoadStatus(LoadStatus.LOADED)
   }
 
+  const remove = async (id: string) => {
+    try {
+      await productApi.remove(id)
+      setProducts(products.filter(p => p.id !== id))
+    } catch (error) {
+      // TODO:
+    }
+  }
+
   return (
     <ProductContext.Provider
       value={{
         getProducts,
+        remove,
         products,
         loadStatus,
         error,

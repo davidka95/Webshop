@@ -18,7 +18,8 @@ import {Product} from '../model/product'
 import {RootTabParamsList} from '../navigation/rootTab'
 
 export const ProductScreen = () => {
-  const {getProducts, loadStatus, products, error} = useContext(ProductContext)
+  const {getProducts, loadStatus, products, error, remove} =
+    useContext(ProductContext)
   const tabNavigation =
     useNavigation<NativeStackNavigationProp<RootTabParamsList>>()
 
@@ -32,7 +33,14 @@ export const ProductScreen = () => {
 
   const renderItem = (row: ListRenderItemInfo<Product>) => {
     const {item} = row
-    return <ProductRow product={item} />
+    return (
+      <ProductRow
+        product={item}
+        onDeletePress={() => {
+          remove(item.id)
+        }}
+      />
+    )
   }
 
   const renderExtraEmptyComponent = useMemo(
