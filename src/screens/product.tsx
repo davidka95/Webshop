@@ -16,7 +16,6 @@ import {ProductContext} from '../context/productProvider'
 import {LoadStatus} from '../model/enum/loadStatus'
 import {Product} from '../model/product'
 import {ProductStackParamList} from '../navigation/productStack'
-import {RootStackParamList} from '../navigation/rootStack'
 import {RootTabParamsList} from '../navigation/rootTab'
 
 export const ProductScreen = () => {

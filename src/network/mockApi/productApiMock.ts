@@ -1,11 +1,11 @@
 import MockAdapter from 'axios-mock-adapter'
 import {Product} from '../../model/product'
-import axios from 'axios'
 import 'react-native-get-random-values'
 import {v4} from 'uuid'
 import {CreateProductResponse} from '../../model/dto/createProductResponse'
+import {apiClient} from '../apiClient'
 
-const mock = new MockAdapter(axios, {delayResponse: 750})
+const mock = new MockAdapter(apiClient, {delayResponse: 750})
 
 mock.onGet('product/read').reply<Product[]>(200, [
   {

@@ -1,4 +1,3 @@
-import {responseLogger} from 'axios-logger'
 import {appConfig} from '../../config/config'
 import {CreateProduct} from '../../model/dto/createProduct'
 import {CreateProductResponse} from '../../model/dto/createProductResponse'
@@ -30,8 +29,8 @@ export class ProductApi {
   }
 
   update = async (id: string, product: CreateProduct) => {
-    const reponse = await apiClient.post<CreateProductResponse>(
-      'product',
+    const reponse = await apiClient.put<CreateProductResponse>(
+      `product/${id}`,
       product,
     )
     return reponse.data

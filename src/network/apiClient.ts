@@ -1,8 +1,8 @@
-import {Axios} from 'axios'
+import axios from 'axios'
 import {appConfig} from '../config/config'
 import * as AxiosLogger from 'axios-logger'
 
-export const apiClient = new Axios({
+export const apiClient = axios.create({
   baseURL: appConfig.baseUrl,
   headers: {
     'X-API-KEY': appConfig.apiKey,
